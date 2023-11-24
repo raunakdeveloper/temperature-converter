@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      background-color: skyblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    #calculator {
+      background-color: floralwhite;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    input, select, button {
+      font-size: 16px;
+      margin: 5px;
+      padding: 10px;
+    }
+
+    p {
+      font-size: 25px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="calculator">
+    <h2>Temperature Converter</h2>
+
+    <label for="temperature"></label>
+    <input type="text" placeholder="Enter Temperature" inputmode="numeric" maxlength="4" id="temperature" required>
+    <br>
+    <label for="scale"></label>
+    <select id="scale">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+    </select>
+    <br>
+    <button onclick="convertTemperature()">Convert</button>
+
+    <p id="result">Result : </p>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      let temperature = parseFloat(document.getElementById("temperature").value);
+      let scale = document.getElementById("scale").value;
+
+      let convertedTemperature;
+      if (scale === "celsius") {
+        convertedTemperature = (temperature * 9/5) + 32;
+        document.getElementById("result").innerHTML = "Result : " + convertedTemperature.toFixed(2) + "°F";
+      } else {
+        convertedTemperature = (temperature - 32) * 5/9;
+        document.getElementById("result").innerHTML = "Result : " + convertedTemperature.toFixed(2) + "°C";
+      }
+    }
+  </script>
+
+</body>
+</html>
